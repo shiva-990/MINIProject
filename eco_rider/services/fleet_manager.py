@@ -18,6 +18,25 @@ def add_vehicle_to_hub(hub_name, vehicle):
         else:
             fleet_hubs[hub_name].append(vehicle)
             print(f"{vehicle.model} added to {hub_name}")
+# uc8
+def search_by_hub(hub_name):
+    if hub_name not in fleet_hubs:
+        print("Hub not found!")
+        return
+
+    print(f"\nVehicles in {hub_name}:")
+    for v in fleet_hubs[hub_name]:
+        print(f"{v.model} ({v.vehicle_id}) - Battery: {v.get_battery()}%")
+
+def search_high_battery(threshold=80):
+    print(f"\nVehicles with battery > {threshold}%:")
+
+    for hub, vehicles in fleet_hubs.items():
+        high_battery = list(filter(lambda v: v.get_battery() > threshold, vehicles))
+
+        for v in high_battery:
+            print(f"{v.model} ({v.vehicle_id}) - {v.get_battery()}% in {hub}")
+
 
 # Display all hubs
 def display_fleet():
