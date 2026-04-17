@@ -13,8 +13,11 @@ def add_vehicle_to_hub(hub_name, vehicle):
     if hub_name not in fleet_hubs:
         print("Hub does not exist!")
     else:
-        fleet_hubs[hub_name].append(vehicle)
-        print(f"{vehicle.model} added to {hub_name}")
+        if vehicle in fleet_hubs[hub_name]:
+            print(f"Duplicate vehicle ID {vehicle.vehicle_id} not allowed!")
+        else:
+            fleet_hubs[hub_name].append(vehicle)
+            print(f"{vehicle.model} added to {hub_name}")
 
 # Display all hubs
 def display_fleet():
