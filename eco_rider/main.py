@@ -1,9 +1,8 @@
-from models.vehicle import Vehicle
+from models.electric_car import ElectricCar
+from models.electric_scooter import ElectricScooter
 
+car = ElectricCar("KA-01", "Nexon EV", 80, 5)
+scooter = ElectricScooter("KA-02", "Ather 450X", 60, 90)
 
-v1 = Vehicle("KA-01-1234", "Tata Nexon EV", 80)
-
-
-print("Vehicle ID:", v1.vehicle_id)
-print("Model:", v1.model)
-print("Battery:", v1.battery_percentage)
+print("Car trip cost:", car.calculate_trip_cost(10))
+print("Scooter trip cost:", scooter.calculate_trip_cost(30))
